@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Game.Scripts{
 	[Serializable]
-	public class Personality{
-		[ValueDropdown("GetPersonalityID")] public string id;
-		public int loveValue;
-		public List<string> name;
+	public class MatchingRules{
+		[Range(0, 12)] public int matchLove = 6;
+		[ValueDropdown("GetPersonalityID")] public List<string> lastedPersonality;
+		[ValueDropdown("GetPersonalityID")] public List<string> bothPersonality;
 
 		private List<ValueDropdownItem> GetPersonalityID(){
 			return ShareLibrary.PersonalityIDs
