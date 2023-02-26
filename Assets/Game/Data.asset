@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26eb914442e24e53aa96f92bde5b7dfd, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  personalities: []
+  personalities:
+  - binding:
+      id: Frugal
+      loveValue: 0
+      name: 
+    disallow: []
+    attractive: []
+    repulsive: []
