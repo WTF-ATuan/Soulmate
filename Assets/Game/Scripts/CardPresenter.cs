@@ -1,30 +1,17 @@
-﻿using System.Collections.Generic;
-using Sirenix.OdinInspector;
-using UniRx;
-using UniRx.Triggers;
+﻿using System.Linq;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
+using Zenject;
 
 namespace Game.Scripts{
 	public class CardPresenter : MonoBehaviour{
-		[Required] public List<LayoutGroup> inventoryList;
+		[Inject] private readonly CardRepository _repository;
 
-		private void Start(){
-			foreach(var layoutGroup in inventoryList){
-				layoutGroup.OnDropAsObservable().Subscribe(x => DropHandler(x, layoutGroup));
+		public void SwitchOwner(Card card, string owner){
+			var cardWithOwner = _repository.GetCardWithOwner(owner);
+			if(cardWithOwner.Any(ownerCard => ownerCard.IsConflict(card.cardID))){
+				return;
 			}
+			card.SwitchOwner(owner);
 		}
-
-		private void DropHandler(PointerEventData eventData, LayoutGroup layout){
-			var draggingObj = eventData.pointerDrag;
-			draggingObj.transform.SetParent(layout.transform, false);
-			draggingObj.GetComponent<CardDrag>().ResetPosition();
-			layout.CalculateLayoutInputHorizontal();
-			layout.CalculateLayoutInputVertical();
-			layout.SetLayoutHorizontal();
-			layout.SetLayoutVertical();
-		}
-		
 	}
 }

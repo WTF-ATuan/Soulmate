@@ -335,6 +335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 217203572}
   - component: {fileID: 217203571}
+  - component: {fileID: 217203573}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -356,7 +357,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers:
   - {fileID: 11400000, guid: 9586c09abfe9d184f9acfbe615c55584, type: 2}
-  _monoInstallers: []
+  _monoInstallers:
+  - {fileID: 217203573}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -388,6 +390,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &217203573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217203570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba1138a1ca24583823f922459ebfa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &673698181
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +713,7 @@ GameObject:
   - component: {fileID: 756419646}
   - component: {fileID: 756419648}
   - component: {fileID: 756419649}
+  - component: {fileID: 756419650}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -787,6 +802,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &756419650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756419644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5162ae95864c9c9df8dcf86e84044e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardID: Frugal
+  cardName: 
+  attachOwner: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,7 +912,6 @@ GameObject:
   - component: {fileID: 1072587143}
   - component: {fileID: 1072587142}
   - component: {fileID: 1072587141}
-  - component: {fileID: 1072587145}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -975,22 +1004,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1072587145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072587140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5998fbb6898b4a55a34d086f458d3c0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryList:
-  - {fileID: 673698185}
-  - {fileID: 1224978028}
-  - {fileID: 1306485924}
 --- !u!1 &1207804821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,9 +1239,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftPersonData:
-  - 
+  - Frugal
   rightPersonData:
-  - 
+  - Squander
 --- !u!4 &1227787761
 Transform:
   m_ObjectHideFlags: 0
@@ -1564,6 +1577,7 @@ GameObject:
   - component: {fileID: 1829947026}
   - component: {fileID: 1829947028}
   - component: {fileID: 1829947029}
+  - component: {fileID: 1829947030}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -1652,6 +1666,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1829947030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829947024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5162ae95864c9c9df8dcf86e84044e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardID: Squander
+  cardName: 
+  attachOwner: 
 --- !u!1 &1837769563
 GameObject:
   m_ObjectHideFlags: 0

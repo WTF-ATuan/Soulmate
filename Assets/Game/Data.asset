@@ -17,15 +17,18 @@ MonoBehaviour:
       id: Frugal
       loveValue: 1
       name:
-      - 
-    disallow: []
+      - "\u62D2\u7D76\u6D6A\u8CBB"
+      - "\u5BA2\u5BB6\u7CBE\u795E"
+    disallow:
+    - Honest
     attractive:
     - Frugal
     repulsive: []
   - binding:
       id: Squander
       loveValue: 0
-      name: []
+      name:
+      - "\u63EE\u970D"
     disallow:
     - Frugal
     attractive: []
