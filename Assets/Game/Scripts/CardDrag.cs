@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class CardDrag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler{
 	private Vector3 _basePos;
 	private Vector3 _vec;
 	private CanvasGroup _canvasGroup;
+	private Action OnDragFinish;
 
 	private void Awake(){
 		_basePos = transform.localPosition;
@@ -38,9 +40,14 @@ public class CardDrag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
 		_draging = false;
 		_canvasGroup.blocksRaycasts = true;
 		_canvasGroup.alpha = 1f;
+		OnDragFinish?.Invoke();
 	}
 
 	public void ResetPosition(){
-		_basePos = transform.localPosition;
+		transform.localPosition = Vector3.zero;
+	}
+
+	public void Setup(Action onDragFinish) {
+		OnDragFinish = onDragFinish;
 	}
 }
