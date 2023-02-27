@@ -31,6 +31,7 @@ namespace Game.Scripts{
 				select rightRule.CalculateLoveValue(personality)).Sum();
 			var matching = _dataSet.GetCloseMatching(person1Data, person2Data, lovePoint);
 			Debug.Log($"matching = {matching.name}");
+			image.transform.parent.gameObject.SetActive(true);
 			image.sprite = matching.image;
 			resultList.Add(new EndingResult(person1Data, person2Data, matching));
 		}
