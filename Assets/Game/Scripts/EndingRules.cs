@@ -8,6 +8,7 @@ namespace Game.Scripts{
 	[Serializable]
 	public class EndingRules{
 		public string name;
+		[PreviewField] public Sprite image;
 		[Range(0, 25)]public int generatePoint = 10;
 		[ValueDropdown("GetPersonalityID")] public List<string> notContainPersonality;
 		[ValueDropdown("GetPersonalityID")] public List<string> containPersonality;

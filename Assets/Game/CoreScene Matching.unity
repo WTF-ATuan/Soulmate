@@ -1253,8 +1253,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftPersonData:
   - Frugal
+  - Clever
+  - Peace
   rightPersonData:
   - Squander
+  - Outgoing
+  - Dishonest
 --- !u!4 &1227787761
 Transform:
   m_ObjectHideFlags: 0
