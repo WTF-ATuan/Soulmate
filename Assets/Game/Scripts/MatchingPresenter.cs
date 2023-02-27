@@ -12,8 +12,6 @@ namespace Game.Scripts{
 		[Inject] private readonly PersonalityDataSet _dataSet;
 
 		[Required] [SerializeField] private GameObject imageRoot;
-		[Required] [SerializeField] private Image uiSprite;
-		[Required] [SerializeField] private Text text;
 		[ReadOnly] public List<EndingResult> resultList = new List<EndingResult>();
 
 		[InlineButton("Test")] public bool debug = false;
@@ -26,7 +24,7 @@ namespace Game.Scripts{
 				var person2 = x.Data[1];
 				MatchMaking(person1, person2);
 			});
-			uiSprite.OnPointerClickAsObservable().Subscribe(x => { imageRoot.SetActive(false); });
+			imageRoot.GetComponentsInChildren<Image>(true)[1].OnPointerClickAsObservable().Subscribe(x => { imageRoot.SetActive(false); });
 		}
 
 		public void Test(){
@@ -55,8 +53,8 @@ namespace Game.Scripts{
 
 		private void UpdateUI(MatchingRules matching){
 			imageRoot.SetActive(true);
-			uiSprite.sprite = matching.image;
-			text.text = matching.name;
+			imageRoot.GetComponentsInChildren<Image>(true)[1].sprite = matching.image;
+			imageRoot.GetComponentInChildren<Text>(true).text = matching.name;
 		}
 	}
 }
