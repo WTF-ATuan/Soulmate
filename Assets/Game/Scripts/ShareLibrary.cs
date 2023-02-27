@@ -6,12 +6,18 @@ namespace Game.Scripts{
 			"Honest",
 			"Dishonest",
 			"Frugal",
-			"Squander" ,
+			"Squander",
 			"Clever",
 			"Stupid",
 			"Warlike",
 			"Peace",
 			"Obedience",
+			"Outgoing",
+			"Introverted",
+			"Egocentric",
+			"Generous",
+			"Hardworking",
+			"Lazy"
 		};
 	}
 }
