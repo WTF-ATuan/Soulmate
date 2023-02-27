@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Game.Scripts{
 	[CreateAssetMenu(fileName = "Data", menuName = "Data/Personality", order = 0)]
@@ -45,13 +46,21 @@ namespace Game.Scripts{
 					isContain = true;
 				}
 
+				if(rules.lastedPersonality.IsNullOrEmpty()){
+					isLast = true;
+				}
+
+				if(rules.bothPersonality.IsNullOrEmpty()){
+					isContain = true;
+				}
+
 				if(isLast && isContain && isGrater){
 					matchEndingList.Add(rules);
 				}
 			}
 
 			if(matchEndingList.IsNullOrEmpty()) throw new Exception("NotMatching");
-			return matchEndingList[0];
+			return matchEndingList[Random.Range(0, matchEndingList.Count)];
 		}
 	}
 }
