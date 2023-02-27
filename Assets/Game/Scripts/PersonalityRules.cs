@@ -22,7 +22,7 @@ namespace Game.Scripts{
 		}
 
 		public bool CheckConflict(string personalityID){
-			return !disallow.Contains(personalityID);
+			return personalityID.Equals(binding.id) || disallow.Contains(personalityID);
 		}
 
 		private List<ValueDropdownItem> GetPersonalityID(){
