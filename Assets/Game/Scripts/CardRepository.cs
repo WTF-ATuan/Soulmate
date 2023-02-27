@@ -5,7 +5,7 @@ namespace Game.Scripts{
 		private readonly List<Card> _cards = new List<Card>();
 
 		public List<Card> GetCardWithOwner(string owner){
-			return _cards.FindAll(x => x.attachOwner.Equals(owner));
+			return _cards.FindAll(x => x.Panel.Equals(owner));
 		}
 
 		public void Add(Card card){

@@ -5,38 +5,40 @@ using UnityEngine;
 using Zenject;
 
 namespace Game.Scripts{
-	public class Card : MonoBehaviour{
+	public class Card : MonoBehaviour
+	{
+		public CardDrag Drag;
 		[Required] [ValueDropdown("GetPersonalityID")]
 		public string cardID;
-		public string cardName;
-		public string attachOwner;
+		[SerializeField] string cardName;
+		public CardsPanelCtrl Panel => GetComponentInParent<CardsPanelCtrl>();
 
-		[Inject] private readonly PersonalityDataSet _dataSet;
-		[Inject] private readonly CardRepository _repository;
-		private PersonalityRules _rules;
+		[Inject] protected readonly PersonalityDataSet _dataSet;
+		public PersonalityRules _rules { private set; get; }
 
 		private void Start(){
 			_rules = _dataSet.GetBindingData(cardID);
 			cardName = _rules.binding.name[0];
-			attachOwner = transform.parent.name;
-			_repository.Add(this);
+			Drag.Setup(() => {
+				EventAggregator.Publish(new OnCardDragFinish(this));
+				Drag.ResetPosition();
+			});
 		}
-
-		public bool CanAddTo(string id){
-			return _rules.CheckConflict(id);
+		
+		public void SwitchOwner(CardsPanelCtrl ctrl) {
+			transform.parent = ctrl.transform;
 		}
-
-		public void SwitchOwner(string ownerName){
-			attachOwner = ownerName;
-		}
-
-		public bool IsConflict(string id){
-			return _rules.CheckConflict(id);
-		}
-
 		private List<ValueDropdownItem> GetPersonalityID(){
 			return ShareLibrary.PersonalityIDs
 					.Select(personalityID => new ValueDropdownItem(personalityID, personalityID)).ToList();
+		}
+	}
+
+	public class OnCardDragFinish {
+		public Card Card;
+
+		public OnCardDragFinish(Card card) {
+			Card = card;
 		}
 	}
 }
