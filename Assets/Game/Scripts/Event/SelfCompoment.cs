@@ -1,7 +1,7 @@
 using UnityEngine;
 using Component = System.ComponentModel.Component;
 
-public class SelfCompoment<T> where T : Component
+public class SelfCompoment<T>
 {
     private T save;
     private GameObject self;

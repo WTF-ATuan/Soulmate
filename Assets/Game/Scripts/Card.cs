@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Game.Scripts{
@@ -10,7 +12,7 @@ namespace Game.Scripts{
 		public CardDrag Drag;
 		[Required] [ValueDropdown("GetPersonalityID")]
 		public string cardID;
-		[SerializeField] string cardName;
+		[SerializeField] Text cardName;
 		public CardsPanelCtrl Panel => GetComponentInParent<CardsPanelCtrl>();
 
 		[Inject] protected readonly PersonalityDataSet _dataSet;
@@ -18,7 +20,7 @@ namespace Game.Scripts{
 
 		private void Start(){
 			_rules = _dataSet.GetBindingData(cardID);
-			cardName = _rules.binding.name[0];
+			cardName.text = _rules.binding.GetRandomName();
 			Drag.Setup(() => {
 				EventAggregator.Publish(new OnCardDragFinish(this));
 				Drag.ResetPosition();
