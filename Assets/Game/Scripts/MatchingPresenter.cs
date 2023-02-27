@@ -19,7 +19,8 @@ namespace Game.Scripts{
 			var lovePoint = (from personality in leftPersonData
 				from rightRule in rightRules
 				select rightRule.CalculateLoveValue(personality)).Sum();
-			Debug.Log($"lovePoint = {lovePoint}");
+			var matching = _dataSet.GetCloseMatching(leftPersonData, rightPersonData, lovePoint);
+			Debug.Log($"matching = {matching.name}");
 		}
 
 
