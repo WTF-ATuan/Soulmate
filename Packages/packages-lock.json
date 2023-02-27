@@ -21,13 +21,6 @@
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
-    "com.smkplus.custom-toolbar": {
-      "version": "https://github.com/smkplus/CustomToolbar.git#master",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "5408dc65a416c6bb897372f0456f1cf43efb0f98"
-    },
     "com.svermeulen.extenject": {
       "version": "9.2.0-stcf3",
       "depth": 0,
@@ -72,15 +65,6 @@
         "com.unity.ext.nunit": "1.0.6",
         "com.unity.modules.imgui": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.textmeshpro": {
-      "version": "3.0.6",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.ugui": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },

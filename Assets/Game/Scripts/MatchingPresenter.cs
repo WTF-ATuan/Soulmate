@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 
@@ -13,9 +11,9 @@ namespace Game.Scripts{
 	public class MatchingPresenter : MonoBehaviour{
 		[Inject] private readonly PersonalityDataSet _dataSet;
 
-		[SerializeField] private Image uiSprite;
-		[SerializeField] private GameObject imageRoot;
-		[SerializeField] private Text text;
+		[Required] [SerializeField] private GameObject imageRoot;
+		[Required] [SerializeField] private Image uiSprite;
+		[Required] [SerializeField] private Text text;
 		[ReadOnly] public List<EndingResult> resultList = new List<EndingResult>();
 
 		[InlineButton("Test")] public bool debug = false;
@@ -35,11 +33,7 @@ namespace Game.Scripts{
 			MatchMaking(personA, personB);
 		}
 
-		public void MatchMaking(List<string> person1Data, List<string> person2Data){
-			if(person1Data.IsNullOrEmpty() || person2Data.IsNullOrEmpty()){
-				return;
-			}
-
+		private void MatchMaking(List<string> person1Data, List<string> person2Data){
 			var person2 = person2Data.Select(personality
 					=> _dataSet.GetBindingData(personality)).ToList();
 			var person1 = person1Data.Select(personality
@@ -55,10 +49,14 @@ namespace Game.Scripts{
 
 			var allLovePoint = lovePointA + lovePointB;
 			var matching = _dataSet.GetCloseMatching(person1Data, person2Data, allLovePoint);
+			resultList.Add(new EndingResult(person1Data, person2Data, matching));
+			UpdateUI(matching);
+		}
+
+		private void UpdateUI(MatchingRules matching){
 			imageRoot.SetActive(true);
 			uiSprite.sprite = matching.image;
 			text.text = matching.name;
-			resultList.Add(new EndingResult(person1Data, person2Data, matching));
 		}
 	}
 }

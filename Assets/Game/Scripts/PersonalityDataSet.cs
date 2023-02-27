@@ -35,7 +35,7 @@ namespace Game.Scripts{
 			foreach(var rules in matchingRulesList){
 				var isLast = false;
 				var isContain = false;
-				var isGrater = lovePoint > rules.matchLove;
+				var isGrater = lovePoint >= rules.matchLove;
 				foreach(var unused in rules.lastedPersonality
 								.Where(last => combineList.Contains(last))){
 					isLast = true;

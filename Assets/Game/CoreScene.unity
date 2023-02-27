@@ -765,7 +765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9f1ab95e35442abbf2b0838452eb98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 143780954}
+  uiSprite: {fileID: 143780954}
   imageRoot: {fileID: 1198592650}
   text: {fileID: 1028240332}
   resultList: []
@@ -1277,7 +1277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1198592651
 RectTransform:
   m_ObjectHideFlags: 0
