@@ -184,9 +184,86 @@ MonoBehaviour:
     repulsive:
     - Lazy
   matchingRulesList:
-  - name: 
+  - name: "\u6563\u76E1\u5BB6\u8CA1,\u4E00\u8D77\u7576\u6D41\u6D6A\u6F22"
     matchLove: 6
     lastedPersonality: []
+    bothPersonality:
+    - Squander
+  - name: "\u4E00\u8D77\u767C\u660E\u4E86\u6642\u5149\u6A5F,\u4F46\u53EA\u80FD\u50B3\u9001\u5230\u4E00\u5206\u9418\u524D"
+    matchLove: 8
+    lastedPersonality: []
+    bothPersonality:
+    - Clever
+  - name: "\u4E00\u8D77\u5EFA\u7ACB\u4E86\u4E00\u500B\u653F\u9EE8,\u540D\u5B57\u53EB<\u6B61\u6A02\u7121\u6CD5\u9EE8>"
+    matchLove: 7
+    lastedPersonality:
+    - Outgoing
+    - Clever
+    - Hardworking
+    bothPersonality:
+    - Honest
+  - name: "\u4E00\u8D77\u5EFA\u7ACB\u4E86\u4E00\u500B\u5B97\u6559,\u540D\u5B57\u53EB<\u672B\u4E16\u6551\u8D16\u6559>"
+    matchLove: 7
+    lastedPersonality:
+    - Obedience
+    - Outgoing
+    - Clever
+    bothPersonality: []
+  - name: "\u4ED6\u5011\u7684\u5C0F\u5B69\u628A\u4ED6\u5011\u7D66\u6BBA\u6389\u4E86"
+    matchLove: 6
+    lastedPersonality:
+    - Warlike
+    - Dishonest
+    bothPersonality:
+    - Egocentric
+  - name: "\u767C\u73FE\u5C0D\u65B9\u5176\u5BE6\u662Fai, \u65BC\u662F\u751F\u51FA\u4E86\u4EBA\u985E\u8207ai\u7D50\u5408\u7684\u5BF6\u5BF6"
+    matchLove: 6
+    lastedPersonality: []
+    bothPersonality: []
+  - name: "\u89BA\u5F97\u53E6\u4E00\u534A\u592A\u5F31\u667A\u4E86"
+    matchLove: 0
+    lastedPersonality:
+    - Clever
+    - Stupid
+    bothPersonality: []
+  - name: "\u5207\u516B\u6BB5"
+    matchLove: 0
+    lastedPersonality: []
+    bothPersonality: []
+  - name: "\u5BB6\u66B4\u628A\u53E6\u4E00\u534A\u903C\u6210\u4E86\u591A\u91CD\u4EBA\u683C"
+    matchLove: 0
+    lastedPersonality:
+    - Obedience
+    - Warlike
+    bothPersonality: []
+  - name: "\u6563\u76E1\u5BB6\u8CA1,\u9913\u6B7B\u8857\u982D"
+    matchLove: 0
+    lastedPersonality: []
+    bothPersonality:
+    - Squander
+  - name: "\u53D7\u4E0D\u4E86\u53E6\u4E00\u534A\u6C38\u9060\u4E0D\u7D66\u4F60\u5403\u4ED6\u7684\u7206\u7C73\u82B1"
+    matchLove: 0
+    lastedPersonality:
+    - Egocentric
+    - Generous
+    bothPersonality: []
+  - name: "\u53D7\u4E0D\u4E86\u53E6\u4E00\u534A\u6C38\u9060\u4E0D\u627F\u8A8D\u81EA\u5DF1\u653E\u5C41"
+    matchLove: 0
+    lastedPersonality:
+    - Honest
+    - Dishonest
+    bothPersonality: []
+  - name: "\u96D9\u65B9\u90FD\u4E0D\u60F3\u96E2\u958B\u6C99\u767C"
+    matchLove: 0
+    lastedPersonality:
+    - Honest
+    - Dishonest
+    bothPersonality: []
+  - name: "\u53D7\u4E0D\u4E86\u53E6\u4E00\u534A2/3\u7684\u6642\u9593\u90FD\u5728\u7761\u89BA"
+    matchLove: 0
+    lastedPersonality:
+    - Lazy
+    - Hardworking
     bothPersonality: []
   endingRulesList:
   - name: "\u7E41\u69AE\u7684\u661F\u7403"
