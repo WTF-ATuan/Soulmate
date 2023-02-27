@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UniRx;
 using UniRx.Triggers;
@@ -26,5 +25,6 @@ namespace Game.Scripts{
 			layout.SetLayoutHorizontal();
 			layout.SetLayoutVertical();
 		}
+		
 	}
 }
