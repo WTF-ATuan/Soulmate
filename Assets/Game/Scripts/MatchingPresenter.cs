@@ -27,7 +27,7 @@ namespace Game.Scripts{
 		}
 
 		public void Test(){
-			MatchMaking(personA , personB);
+			MatchMaking(personA, personB);
 		}
 
 		public void MatchMaking(List<string> person1Data, List<string> person2Data){
@@ -37,12 +37,20 @@ namespace Game.Scripts{
 
 			var person2 = person2Data.Select(personality
 					=> _dataSet.GetBindingData(personality)).ToList();
+			var person1 = person1Data.Select(personality
+					=> _dataSet.GetBindingData(personality)).ToList();
 
-			var lovePoint = (from personality in person1Data
+			var lovePointA = (from personality in person1Data
 				from peron2Rule in person2
 				select peron2Rule.CalculateLoveValue(personality)).Sum();
-			Debug.Log($"lovePoint = {lovePoint}");
-			var matching = _dataSet.GetCloseMatching(person1Data, person2Data, lovePoint);
+			
+			var lovePointB = (from personality in person2Data
+				from peron1Rule in person1
+				select peron1Rule.CalculateLoveValue(personality)).Sum();
+
+			var allLovePoint = lovePointA + lovePointB;
+			Debug.Log($"lovePoint = {allLovePoint}");
+			var matching = _dataSet.GetCloseMatching(person1Data, person2Data, allLovePoint);
 			Debug.Log($"matching = {matching.name}");
 			image.transform.parent.gameObject.SetActive(true);
 			image.sprite = matching.image;
