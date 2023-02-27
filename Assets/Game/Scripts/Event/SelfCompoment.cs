@@ -7,6 +7,13 @@ public class SelfCompoment<T>
     private GameObject self;
     public delegate T CompomentGet(GameObject self);
     CompomentGet Action;
+    
+    public SelfCompoment(GameObject gameObject)
+    {
+        Action = self => self.GetComponent<T>();
+        self = gameObject;
+    }
+
     public SelfCompoment(GameObject gameObject,CompomentGet action)
     {
         Action = action;

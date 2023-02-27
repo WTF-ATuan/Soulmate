@@ -11,7 +11,9 @@ public class SendMatch : MonoBehaviour
     public List<SoulPanelCtrl> Panels;
     private SelfCompoment<Button> B;
 
-    private void Awake() {
+    private void Awake()
+    {
+        B = new SelfCompoment<Button>(gameObject);
         B.Get().onClick.AddListener(() => {
             EventAggregator.Publish(new OnSendMatch(Panels));
         });
