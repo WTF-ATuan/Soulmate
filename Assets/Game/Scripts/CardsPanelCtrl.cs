@@ -11,7 +11,7 @@ using Zenject;
 
 public abstract class CardsPanelCtrl : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
-    public List<Card> CardsList => GetComponents<Card>().ToList();
+    public List<Card> CardsList => GetComponentsInChildren<Card>().ToList();
     protected abstract bool CanCardDragIn(Card c);
     private void Awake() {
         
