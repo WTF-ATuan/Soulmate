@@ -15,12 +15,22 @@ MonoBehaviour:
   personalityRuleList:
   - binding:
       id: Frugal
-      loveValue: 0
+      loveValue: 1
       name:
       - 
     disallow: []
-    attractive: []
+    attractive:
+    - Frugal
     repulsive: []
+  - binding:
+      id: Squander
+      loveValue: 0
+      name: []
+    disallow:
+    - Frugal
+    attractive: []
+    repulsive:
+    - Frugal
   matchingRulesList:
   - matchLove: 6
     lastedPersonality: []
