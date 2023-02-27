@@ -6,11 +6,12 @@ using UnityEngine;
 
 namespace Game.Scripts{
 	[Serializable]
-	public class MatchingRules{
+	public class EndingRules{
 		public string name;
-		[Range(0, 12)] public int matchLove = 6;
-		[ValueDropdown("GetPersonalityID")] public List<string> lastedPersonality;
-		[ValueDropdown("GetPersonalityID")] public List<string> bothPersonality;
+		[Range(0, 25)]public int generatePoint = 10;
+		[ValueDropdown("GetPersonalityID")] public List<string> notContainPersonality;
+		[ValueDropdown("GetPersonalityID")] public List<string> containPersonality;
+
 
 		private List<ValueDropdownItem> GetPersonalityID(){
 			return ShareLibrary.PersonalityIDs

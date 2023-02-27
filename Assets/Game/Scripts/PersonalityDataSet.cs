@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 using Zenject;
 
@@ -8,7 +7,7 @@ namespace Game.Scripts{
 	public class PersonalityDataSet : ScriptableObjectInstaller<PersonalityDataSet>{
 		public List<PersonalityRules> personalityRuleList;
 		public List<MatchingRules> matchingRulesList;
-
+		public List<EndingRules> endingRulesList;
 		public override void InstallBindings(){
 			Container.Bind<PersonalityDataSet>().FromInstance(this);
 		}

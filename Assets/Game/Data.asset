@@ -183,4 +183,13 @@ MonoBehaviour:
     - Hardworking
     repulsive:
     - Lazy
-  matchingRulesList: []
+  matchingRulesList:
+  - name: 
+    matchLove: 6
+    lastedPersonality: []
+    bothPersonality: []
+  endingRulesList:
+  - name: 
+    generatePoint: 10
+    notContainPersonality: []
+    containPersonality: []
