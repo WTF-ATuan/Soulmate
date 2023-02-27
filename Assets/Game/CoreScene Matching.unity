@@ -405,14 +405,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9f1ab95e35442abbf2b0838452eb98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftPersonData:
-  - Frugal
-  - Clever
-  - Peace
-  rightPersonData:
-  - Squander
-  - Outgoing
-  - Dishonest
   image: {fileID: 2042620385}
   resultList: []
 --- !u!4 &1227787761

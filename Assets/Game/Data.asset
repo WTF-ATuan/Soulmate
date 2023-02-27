@@ -185,19 +185,19 @@ MonoBehaviour:
     - Lazy
   matchingRulesList:
   - name: "\u6563\u76E1\u5BB6\u8CA1,\u4E00\u8D77\u7576\u6D41\u6D6A\u6F22"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 199687fc2f77f3542853f32e3ef79856, type: 3}
     matchLove: 6
     lastedPersonality: []
     bothPersonality:
     - Squander
   - name: "\u4E00\u8D77\u767C\u660E\u4E86\u6642\u5149\u6A5F,\u4F46\u53EA\u80FD\u50B3\u9001\u5230\u4E00\u5206\u9418\u524D"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 4704c59b092331147a6651445f57db7d, type: 3}
     matchLove: 8
     lastedPersonality: []
     bothPersonality:
     - Clever
   - name: "\u4E00\u8D77\u5EFA\u7ACB\u4E86\u4E00\u500B\u653F\u9EE8,\u540D\u5B57\u53EB<\u6B61\u6A02\u7121\u6CD5\u9EE8>"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 53d9ab5f7cb054949b5a670f68bba0ac, type: 3}
     matchLove: 7
     lastedPersonality:
     - Outgoing
@@ -206,7 +206,7 @@ MonoBehaviour:
     bothPersonality:
     - Honest
   - name: "\u4E00\u8D77\u5EFA\u7ACB\u4E86\u4E00\u500B\u5B97\u6559,\u540D\u5B57\u53EB<\u672B\u4E16\u6551\u8D16\u6559>"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 591cad94b405096409679cae44456260, type: 3}
     matchLove: 7
     lastedPersonality:
     - Obedience
@@ -214,7 +214,7 @@ MonoBehaviour:
     - Clever
     bothPersonality: []
   - name: "\u4ED6\u5011\u7684\u5C0F\u5B69\u628A\u4ED6\u5011\u7D66\u6BBA\u6389\u4E86"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 9daf0b8656da1b94ca2b868dd47e309d, type: 3}
     matchLove: 6
     lastedPersonality:
     - Warlike
@@ -222,31 +222,31 @@ MonoBehaviour:
     bothPersonality:
     - Egocentric
   - name: "\u767C\u73FE\u5C0D\u65B9\u5176\u5BE6\u662Fai, \u65BC\u662F\u751F\u51FA\u4E86\u4EBA\u985E\u8207ai\u7D50\u5408\u7684\u5BF6\u5BF6"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 61fc6f1a3d527b44d8f25a5193b6f5d2, type: 3}
     matchLove: 6
     lastedPersonality: []
     bothPersonality: []
   - name: "\u89BA\u5F97\u53E6\u4E00\u534A\u592A\u5F31\u667A\u4E86"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: f73b5f9f5611381439c7cfa51e7c855e, type: 3}
     matchLove: 0
     lastedPersonality:
     - Clever
     - Stupid
     bothPersonality: []
   - name: "\u5207\u516B\u6BB5"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: f73b5f9f5611381439c7cfa51e7c855e, type: 3}
     matchLove: 0
     lastedPersonality: []
     bothPersonality: []
   - name: "\u5BB6\u66B4\u628A\u53E6\u4E00\u534A\u903C\u6210\u4E86\u591A\u91CD\u4EBA\u683C"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 020aaf083c5fa0144b24c9b947344492, type: 3}
     matchLove: 0
     lastedPersonality:
     - Obedience
     - Warlike
     bothPersonality: []
   - name: "\u6563\u76E1\u5BB6\u8CA1,\u9913\u6B7B\u8857\u982D"
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 199687fc2f77f3542853f32e3ef79856, type: 3}
     matchLove: 0
     lastedPersonality: []
     bothPersonality:
