@@ -189,7 +189,40 @@ MonoBehaviour:
     lastedPersonality: []
     bothPersonality: []
   endingRulesList:
-  - name: 
-    generatePoint: 10
+  - name: "\u7E41\u69AE\u7684\u661F\u7403"
+    generatePoint: 20
     notContainPersonality: []
     containPersonality: []
+  - name: "\u512A\u751F\u5B78\u661F\u7403"
+    generatePoint: 10
+    notContainPersonality:
+    - Dishonest
+    - Squander
+    - Stupid
+    - Warlike
+    - Egocentric
+    containPersonality: []
+  - name: "\u7368\u88C1\u8005\u661F\u7403"
+    generatePoint: 10
+    notContainPersonality: []
+    containPersonality:
+    - Dishonest
+    - Squander
+    - Stupid
+    - Warlike
+    - Egocentric
+  - name: "\u6C92\u6709\u6587\u660E\u7684\u661F\u7403"
+    generatePoint: 0
+    notContainPersonality: []
+    containPersonality: []
+  - name: "\u5171\u7522\u4E3B\u7FA9\u661F\u7403"
+    generatePoint: 10
+    notContainPersonality:
+    - Clever
+    - Egocentric
+    - Dishonest
+    containPersonality:
+    - Honest
+    - Frugal
+    - Obedience
+    - Generous
