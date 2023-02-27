@@ -11,7 +11,12 @@ namespace Game.Scripts{
 			if(cardWithOwner.Any(ownerCard => ownerCard.IsConflict(card.cardID))){
 				return;
 			}
+
 			card.SwitchOwner(owner);
+		}
+
+		public void SwitchToInventory(Card card){
+			card.SwitchOwner("Bottom");
 		}
 	}
 }
