@@ -46,10 +46,41 @@ namespace Game.Scripts{
 			var person2 = person2Data.Select(personality
 					=> _dataSet.GetBindingData(personality)).ToList();
 
-			var lovePoint1 = person1.Sum(rules1 =>
-					person2.Select(rules2 => rules1.CalculateLoveValue(rules2.binding.id)).Prepend(0).Max());
-			var lovePoint2 = person2.Sum(rules2 =>
-					person1.Select(rules1 => rules1.CalculateLoveValue(rules1.binding.id)).Prepend(0).Max());
+			var lovePoint1 = 0;
+			foreach(var rules1 in person1){
+				var point = rules1.binding.loveValue;
+				foreach(var rules2 in person2){
+					var loveValue = rules2.CalculateLoveValue(rules1.binding.id);
+					if(loveValue == 0){
+						point = 0;
+						break;
+					}
+
+					if(loveValue > point){
+						point = loveValue;
+					}
+				}
+
+				lovePoint1 += point;
+			}
+
+			var lovePoint2 = 0;
+			foreach(var rules2 in person2){
+				var point = rules2.binding.loveValue;
+				foreach(var rules1 in person1){
+					var loveValue = rules1.CalculateLoveValue(rules2.binding.id);
+					if(loveValue == 0){
+						point = 0;
+						break;
+					}
+
+					if(loveValue > point){
+						point = loveValue;
+					}
+				}
+
+				lovePoint2 += point;
+			}
 
 			return lovePoint1 + lovePoint2;
 		}
