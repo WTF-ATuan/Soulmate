@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Zenject;
 
@@ -24,6 +25,10 @@ namespace Game.Scripts{
 			});
 			matchingUI.GetComponentsInChildren<Image>(true)[1].OnPointerClickAsObservable()
 					.Subscribe(x => { matchingUI.SetActive(false); });
+			endingUI.GetComponentsInChildren<Image>(true)[1].OnPointerClickAsObservable()
+					.Subscribe(x => {
+						SceneManager.LoadScene("CoreScene");
+					});
 		}
 
 		public void MatchMaking(List<string> person1Data, List<string> person2Data){
