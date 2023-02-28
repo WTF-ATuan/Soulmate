@@ -31,7 +31,7 @@ namespace Game.Scripts{
 			var matching = _dataSet.GetCloseMatching(person1Data, person2Data, allLovePoint);
 			resultList.Add(new EndingResult(person1Data, person2Data, matching));
 			if(resultList.Count < resultGoal){
-				UpdateMatchingUI(matching);
+				UpdateMatchingUI(allLovePoint, matching);
 			}
 			else{
 				var closeEnding = _dataSet.GetCloseEnding(resultList);
@@ -40,29 +40,25 @@ namespace Game.Scripts{
 		}
 
 		private int CalculateLovePoint(List<string> person1Data, List<string> person2Data){
-			var person2 = person2Data.Select(personality
-					=> _dataSet.GetBindingData(personality)).ToList();
 			var person1 = person1Data.Select(personality
 					=> _dataSet.GetBindingData(personality)).ToList();
+			var person2 = person2Data.Select(personality
+					=> _dataSet.GetBindingData(personality)).ToList();
 
-			var lovePointA = (from personality in person1Data
-				from peron2Rule in person2
-				select peron2Rule.CalculateLoveValue(personality)).Sum();
+			var lovePoint1 = person1.Sum(rules1 =>
+					person2.Select(rules2 => rules1.CalculateLoveValue(rules2.binding.id)).Prepend(0).Max());
+			var lovePoint2 = person2.Sum(rules2 =>
+					person1.Select(rules1 => rules1.CalculateLoveValue(rules1.binding.id)).Prepend(0).Max());
 
-			var lovePointB = (from personality in person2Data
-				from peron1Rule in person1
-				select peron1Rule.CalculateLoveValue(personality)).Sum();
-
-			var allLovePoint = lovePointA + lovePointB;
-			return allLovePoint;
+			return lovePoint1 + lovePoint2;
 		}
 
-		private void UpdateMatchingUI(MatchingRules matching){
+		private void UpdateMatchingUI(int lovePoint, MatchingRules matching){
 			matchingUI.SetActive(true);
 			matchingUI.GetComponentsInChildren<Image>(true)[1].sprite = matching.image;
 			matchingUI.GetComponentsInChildren<Text>(true)[0].text = matching.name;
 			matchingUI.GetComponentsInChildren<Text>(true)[1]
-					.text = $"幸福指數 \r {matching.matchLove}/12";
+					.text = $"幸福指數 \r {lovePoint}/12";
 		}
 
 		private void UpdateEndingUI(EndingRules ending){

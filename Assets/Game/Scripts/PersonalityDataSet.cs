@@ -31,11 +31,14 @@ namespace Game.Scripts{
 					containList.Add(x);
 				}
 			});
+
 			var matchEndingList = new List<MatchingRules>();
 			foreach(var rules in matchingRulesList){
 				var isGrater = lovePoint >= rules.matchLove;
-				var isLast = combineList.Intersect(rules.lastedPersonality).Any();
-				var isContain = combineList.Intersect(rules.bothPersonality).Count() > 1;
+				var isLast = combineList.Intersect(rules.lastedPersonality).Count()
+							 >= rules.lastedPersonality.Count;
+				var isContain = containList.Intersect(rules.bothPersonality).Count()
+								>= rules.bothPersonality.Count;
 				if(rules.lastedPersonality.IsNullOrEmpty()){
 					isLast = true;
 				}
@@ -50,7 +53,9 @@ namespace Game.Scripts{
 			}
 
 			if(matchEndingList.IsNullOrEmpty()) throw new Exception("NotMatching");
-			return matchEndingList[Random.Range(0, matchEndingList.Count)];
+			matchEndingList.ForEach(x => Debug.Log(x.name));
+			var orderBy = matchEndingList.OrderByDescending(x => x.matchLove);
+			return orderBy.First();
 		}
 
 		public EndingRules GetCloseEnding(List<EndingResult> results){
@@ -69,9 +74,10 @@ namespace Game.Scripts{
 			var matchEndingList = new List<EndingRules>();
 			foreach(var endingRules in endingRulesList){
 				var isGreater = generatePoint >= endingRules.generatePoint;
-				var isContain = endingRules.containPersonality.Intersect(allPersonality).Count() >=
-								endingRules.containPersonality.Count;
-				var isNotContain = !endingRules.notContainPersonality.Intersect(allPersonality).Any();
+				var isContain = endingRules.containPersonality.Intersect(allPersonality).Count()
+								>= endingRules.containPersonality.Count;
+				var isNotContain = endingRules.notContainPersonality.Intersect(allPersonality).Count()
+								   >= endingRules.notContainPersonality.Count;
 
 				if(isGreater && isContain && isNotContain){
 					matchEndingList.Add(endingRules);
@@ -79,7 +85,8 @@ namespace Game.Scripts{
 			}
 
 			if(matchEndingList.IsNullOrEmpty()) throw new Exception("NotMatching");
-			return matchEndingList[Random.Range(0, matchEndingList.Count)];
+			var orderBy = matchEndingList.OrderByDescending(x => x.generatePoint);
+			return orderBy.First();
 		}
 	}
 }
