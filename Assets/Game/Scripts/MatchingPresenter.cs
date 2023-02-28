@@ -35,6 +35,7 @@ namespace Game.Scripts{
 			}
 			else{
 				var closeEnding = _dataSet.GetCloseEnding(resultList);
+				PlayerPrefs.SetInt(closeEnding.name, 1);
 				UpdateEndingUI(closeEnding);
 			}
 		}
