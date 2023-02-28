@@ -29,7 +29,7 @@ namespace Game.Scripts{
 		public void MatchMaking(List<string> person1Data, List<string> person2Data){
 			var allLovePoint = CalculateLovePoint(person1Data, person2Data);
 			var matching = _dataSet.GetCloseMatching(person1Data, person2Data, allLovePoint);
-			resultList.Add(new EndingResult(person1Data, person2Data, matching));
+			resultList.Add(new EndingResult(person1Data, person2Data, matching, allLovePoint));
 			if(resultList.Count < resultGoal){
 				UpdateMatchingUI(allLovePoint, matching);
 			}

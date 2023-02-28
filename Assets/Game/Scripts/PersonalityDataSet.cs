@@ -53,18 +53,21 @@ namespace Game.Scripts{
 			}
 
 			if(matchEndingList.IsNullOrEmpty()) throw new Exception("NotMatching");
-			matchEndingList.ForEach(x => Debug.Log(x.name));
-			var orderBy = matchEndingList.OrderByDescending(x => x.matchLove);
-			return orderBy.First();
+			var orderByLovePoint = matchEndingList.OrderByDescending(x => x.matchLove)
+					.ThenByDescending(x => x.lastedPersonality.Count)
+					.ThenByDescending(x => x.bothPersonality.Count);
+
+			return orderByLovePoint.First();
 		}
 
 		public EndingRules GetCloseEnding(List<EndingResult> results){
 			var generatePoint = 0;
 			results.ForEach(x => {
-				if(x.ResultMatching.matchLove > x.ResultMatching.generateStandard){
+				if(x.LovePoint >= x.ResultMatching.generateStandard){
 					generatePoint++;
 				}
 			});
+			Debug.Log($"generatePoint = {generatePoint}");
 			var allPersonality = new List<string>();
 			foreach(var result in results){
 				allPersonality.AddRange(result.Person1);
@@ -85,7 +88,10 @@ namespace Game.Scripts{
 			}
 
 			if(matchEndingList.IsNullOrEmpty()) throw new Exception("NotMatching");
-			var orderBy = matchEndingList.OrderByDescending(x => x.generatePoint);
+			matchEndingList.ForEach(x => Debug.Log(x.name));
+			var orderBy = matchEndingList.OrderByDescending(x => x.generatePoint)
+					.ThenByDescending(x => x.notContainPersonality.Count)
+					.ThenByDescending(x => x.containPersonality.Count);
 			return orderBy.First();
 		}
 	}
