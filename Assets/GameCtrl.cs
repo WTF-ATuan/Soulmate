@@ -78,8 +78,9 @@ public class GameCtrl : MonoBehaviour
             {
                 var soul = new SoulData();
                 List<CardData> CardDatas = new List<CardData>();
+                int lockIndex = Random.Range(0, 3);
                 while (CardDatas.Count<3) {
-                    var newCard = new CardData(){IDIndex = Random.Range(0,_dataSet.personalityRuleList.Count),IsLock = Random.value>0.5};
+                    var newCard = new CardData(){IDIndex = Random.Range(0,_dataSet.personalityRuleList.Count),IsLock = lockIndex==CardDatas.Count};
                     bool noConflict = true;
                     foreach (var card in CardDatas) {
                         if (_dataSet.personalityRuleList[card.IDIndex]
