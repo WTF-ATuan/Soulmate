@@ -28,7 +28,8 @@ namespace Game.Scripts{
 		}
 
 		public void Setup(CardData data) {
-			_rules = _dataSet.GetBindingData(_dataSet.personalityRuleList[data.IDIndex].binding.id);
+			cardID = _dataSet.personalityRuleList[data.IDIndex].binding.id;
+			_rules = _dataSet.GetBindingData(cardID);
 			cardName.text = _rules.binding.GetRandomName();
 			Lock.SetActive(data.IsLock);
 			DragCtrl.enabled = !data.IsLock;
