@@ -64,7 +64,7 @@ public class GameCtrl : MonoBehaviour
         MatchData data = LevelData[NowIndex];
         LeftSoulPanel.Setup(data.SoulDatas[0]);
         RightSoulPanel.Setup(data.SoulDatas[1]);
-        Count.text = $"{NowIndex+1}/{MaxMatch}";
+        Count.text = $"匹配進度 {NowIndex+1}/{MaxMatch}";
     }
     
     List<MatchData> CreateGameData()
