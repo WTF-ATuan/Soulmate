@@ -10,6 +10,7 @@ namespace Game.Scripts{
 		public string name;
 		[PreviewField] public Sprite image;
 		[Range(0, 12)] public int matchLove = 6;
+		public int generateStandard  = 6;
 		[ValueDropdown("GetPersonalityID")] public List<string> lastedPersonality;
 		[ValueDropdown("GetPersonalityID")] public List<string> bothPersonality;
 

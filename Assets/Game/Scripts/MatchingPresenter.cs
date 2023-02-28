@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 
@@ -11,12 +12,10 @@ namespace Game.Scripts{
 	public class MatchingPresenter : MonoBehaviour{
 		[Inject] private readonly PersonalityDataSet _dataSet;
 
-		[Required] [SerializeField] private GameObject imageRoot;
+		[Required] [SerializeField] private GameObject matchingUI;
+		[Required] [SerializeField] private GameObject endingUI;
+		[SerializeField] private int resultGoal = 20;
 		[ReadOnly] public List<EndingResult> resultList = new List<EndingResult>();
-
-		[InlineButton("Test")] public bool debug = false;
-		[ShowIf("debug")] public List<string> personA;
-		[ShowIf("debug")] public List<string> personB;
 
 		private void Start(){
 			EventAggregator.OnEvent<OnSendMatch>().Subscribe(x => {
@@ -24,11 +23,8 @@ namespace Game.Scripts{
 				var person2 = x.Data[1];
 				MatchMaking(person1, person2);
 			});
-			imageRoot.GetComponentsInChildren<Image>(true)[1].OnPointerClickAsObservable().Subscribe(x => { imageRoot.SetActive(false); });
-		}
-
-		public void Test(){
-			MatchMaking(personA, personB);
+			matchingUI.GetComponentsInChildren<Image>(true)[1].OnPointerClickAsObservable()
+					.Subscribe(x => { matchingUI.SetActive(false); });
 		}
 
 		private void MatchMaking(List<string> person1Data, List<string> person2Data){
@@ -47,14 +43,30 @@ namespace Game.Scripts{
 
 			var allLovePoint = lovePointA + lovePointB;
 			var matching = _dataSet.GetCloseMatching(person1Data, person2Data, allLovePoint);
-			resultList.Add(new EndingResult(person1Data, person2Data, matching));
-			UpdateUI(matching);
+			CalculateResult(person1Data, person2Data, matching);
+			UpdateMatchingUI(matching);
 		}
 
-		private void UpdateUI(MatchingRules matching){
-			imageRoot.SetActive(true);
-			imageRoot.GetComponentsInChildren<Image>(true)[1].sprite = matching.image;
-			imageRoot.GetComponentInChildren<Text>(true).text = matching.name;
+		private void CalculateResult(List<string> person1Data, List<string> person2Data, MatchingRules matching){
+			resultList.Add(new EndingResult(person1Data, person2Data, matching));
+			if(resultList.Count < resultGoal){
+				return;
+			}
+
+			var closeEnding = _dataSet.GetCloseEnding(resultList);
+			UpdateEndingUI(closeEnding);
+		}
+
+		private void UpdateMatchingUI(MatchingRules matching){
+			matchingUI.SetActive(true);
+			matchingUI.GetComponentsInChildren<Image>(true)[1].sprite = matching.image;
+			matchingUI.GetComponentInChildren<Text>(true).text = matching.name;
+		}
+
+		private void UpdateEndingUI(EndingRules ending){
+			endingUI.SetActive(true);
+			endingUI.GetComponentsInChildren<Image>(true)[1].sprite = ending.image;
+			endingUI.GetComponentInChildren<Text>(true).text = ending.name;
 		}
 	}
 }

@@ -62,5 +62,34 @@ namespace Game.Scripts{
 			if(matchEndingList.IsNullOrEmpty()) throw new Exception("NotMatching");
 			return matchEndingList[Random.Range(0, matchEndingList.Count)];
 		}
+
+		public EndingRules GetCloseEnding(List<EndingResult> results){
+			var generatePoint = 0;
+			results.ForEach(x => {
+				if(x.ResultMatching.matchLove > x.ResultMatching.generateStandard){
+					generatePoint++;
+				}
+			});
+			var allPersonality = new List<string>();
+			foreach(var result in results){
+				allPersonality.AddRange(result.Person1);
+				allPersonality.AddRange(result.Person2);
+			}
+
+			var matchEndingList = new List<EndingRules>();
+			foreach(var endingRules in endingRulesList){
+				var isGreater = generatePoint >= endingRules.generatePoint;
+				var isContain = endingRules.containPersonality.Intersect(allPersonality).Count() >=
+								endingRules.containPersonality.Count;
+				var isNotContain = !endingRules.notContainPersonality.Intersect(allPersonality).Any();
+
+				if(isGreater && isContain && isNotContain){
+					matchEndingList.Add(endingRules);
+				}
+			}
+
+			if(matchEndingList.IsNullOrEmpty()) throw new Exception("NotMatching");
+			return matchEndingList[Random.Range(0, matchEndingList.Count)];
+		}
 	}
 }

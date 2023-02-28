@@ -765,11 +765,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9f1ab95e35442abbf2b0838452eb98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageRoot: {fileID: 1198592650}
+  matchingUI: {fileID: 1198592650}
+  endingUI: {fileID: 1465724560}
+  resultGoal: 20
   resultList: []
-  debug: 0
-  personA: []
-  personB: []
 --- !u!4 &728479726
 Transform:
   m_ObjectHideFlags: 0
@@ -1765,7 +1764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1465724561
 RectTransform:
   m_ObjectHideFlags: 0
