@@ -92,8 +92,10 @@ public class GameCtrl : MonoBehaviour
                 }
 
                 soul.CardDatas = CardDatas;
-                soul.Name = "Todo";
                 soul.HeadImg = Heads[Random.Range(0,Heads.Count)];
+                soul.Name = soul.HeadImg.name;
+              
+      
                 matchData.SoulDatas.Add(soul);
             }
             data.Add(matchData);

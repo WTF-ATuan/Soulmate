@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SoulPanelCtrl : CardsPanelCtrl
 {
+    public Text Name;
     public Image Head;
     public void Setup(SoulData data)
     {
@@ -15,6 +16,7 @@ public class SoulPanelCtrl : CardsPanelCtrl
         }
 
         Head.sprite = data.HeadImg;
+        Name.text = data.Name;
     }
     
     protected override bool CanCardDragIn(Card c) {
