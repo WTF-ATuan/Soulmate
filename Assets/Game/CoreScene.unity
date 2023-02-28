@@ -827,8 +827,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9f1ab95e35442abbf2b0838452eb98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matchingUI: {fileID: 0}
-  endingUI: {fileID: 0}
+  matchingUI: {fileID: 1198592650}
+  endingUI: {fileID: 1465724560}
   resultGoal: 20
   resultList: []
 --- !u!4 &728479726
