@@ -4,7 +4,6 @@ using Sirenix.OdinInspector;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 
@@ -61,7 +60,9 @@ namespace Game.Scripts{
 		private void UpdateMatchingUI(MatchingRules matching){
 			matchingUI.SetActive(true);
 			matchingUI.GetComponentsInChildren<Image>(true)[1].sprite = matching.image;
-			matchingUI.GetComponentInChildren<Text>(true).text = matching.name;
+			matchingUI.GetComponentsInChildren<Text>(true)[0].text = matching.name;
+			matchingUI.GetComponentsInChildren<Text>(true)[1]
+					.text = $"幸福指數 \r {matching.matchLove}/12";
 		}
 
 		private void UpdateEndingUI(EndingRules ending){
