@@ -28,6 +28,19 @@ namespace Game.Scripts{
 		}
 
 		private void MatchMaking(List<string> person1Data, List<string> person2Data){
+			var allLovePoint = CalculateLovePoint(person1Data, person2Data);
+			var matching = _dataSet.GetCloseMatching(person1Data, person2Data, allLovePoint);
+			resultList.Add(new EndingResult(person1Data, person2Data, matching));
+			if(resultList.Count < resultGoal){
+				UpdateMatchingUI(matching);
+			}
+			else{
+				var closeEnding = _dataSet.GetCloseEnding(resultList);
+				UpdateEndingUI(closeEnding);
+			}
+		}
+
+		private int CalculateLovePoint(List<string> person1Data, List<string> person2Data){
 			var person2 = person2Data.Select(personality
 					=> _dataSet.GetBindingData(personality)).ToList();
 			var person1 = person1Data.Select(personality
@@ -42,23 +55,10 @@ namespace Game.Scripts{
 				select peron1Rule.CalculateLoveValue(personality)).Sum();
 
 			var allLovePoint = lovePointA + lovePointB;
-			var matching = _dataSet.GetCloseMatching(person1Data, person2Data, allLovePoint);
-			CalculateResult(person1Data, person2Data, matching);
-			UpdateMatchingUI(matching);
-		}
-
-		private void CalculateResult(List<string> person1Data, List<string> person2Data, MatchingRules matching){
-			resultList.Add(new EndingResult(person1Data, person2Data, matching));
-			if(resultList.Count < resultGoal){
-				return;
-			}
-
-			var closeEnding = _dataSet.GetCloseEnding(resultList);
-			UpdateEndingUI(closeEnding);
+			return allLovePoint;
 		}
 
 		private void UpdateMatchingUI(MatchingRules matching){
-			if(endingUI.activeSelf) return;
 			matchingUI.SetActive(true);
 			matchingUI.GetComponentsInChildren<Image>(true)[1].sprite = matching.image;
 			matchingUI.GetComponentInChildren<Text>(true).text = matching.name;
