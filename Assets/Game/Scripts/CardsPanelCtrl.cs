@@ -36,4 +36,17 @@ public abstract class CardsPanelCtrl : MonoBehaviour,IPointerEnterHandler,IPoint
     public void OnPointerExit(PointerEventData eventData) {
         IsMouseEnter = false;
     }
+
+    public void Add(CardData data)
+    {
+        var c = GameCtrl.Instance.GenCard(transform);
+        c.Setup(data);
+    }
+    
+    public void Clean()
+    {
+        foreach (var card in CardsList) {
+            Destroy(card.gameObject);
+        }
+    }
 }
