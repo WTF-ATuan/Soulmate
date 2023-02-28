@@ -26,7 +26,7 @@ namespace Game.Scripts{
 					.Subscribe(x => { matchingUI.SetActive(false); });
 		}
 
-		private void MatchMaking(List<string> person1Data, List<string> person2Data){
+		public void MatchMaking(List<string> person1Data, List<string> person2Data){
 			var allLovePoint = CalculateLovePoint(person1Data, person2Data);
 			var matching = _dataSet.GetCloseMatching(person1Data, person2Data, allLovePoint);
 			resultList.Add(new EndingResult(person1Data, person2Data, matching));

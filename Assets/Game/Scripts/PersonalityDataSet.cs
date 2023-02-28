@@ -24,7 +24,7 @@ namespace Game.Scripts{
 		}
 
 		public MatchingRules GetCloseMatching(List<string> person1, List<string> person2, int lovePoint){
-			var combineList = person1.Concat(person2);
+			var combineList = person1.Concat(person2).ToList();
 			var containList = new List<string>();
 			person1.ForEach(x => {
 				if(person2.Contains(x)){
@@ -33,19 +33,9 @@ namespace Game.Scripts{
 			});
 			var matchEndingList = new List<MatchingRules>();
 			foreach(var rules in matchingRulesList){
-				var isLast = false;
-				var isContain = false;
 				var isGrater = lovePoint >= rules.matchLove;
-				foreach(var unused in rules.lastedPersonality
-								.Where(last => combineList.Contains(last))){
-					isLast = true;
-				}
-
-				foreach(var unused in rules.bothPersonality
-								.Where(last => containList.Contains(last))){
-					isContain = true;
-				}
-
+				var isLast = combineList.Intersect(rules.lastedPersonality).Any();
+				var isContain = combineList.Intersect(rules.bothPersonality).Count() > 1;
 				if(rules.lastedPersonality.IsNullOrEmpty()){
 					isLast = true;
 				}
