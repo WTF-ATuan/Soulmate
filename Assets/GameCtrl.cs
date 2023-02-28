@@ -17,6 +17,7 @@ public class GameCtrl : MonoBehaviour
     [SerializeField] DownPanelCtrl DownPanelCtrl;
     [SerializeField] GameObject Card;
     [SerializeField] Text Count;
+    [SerializeField] List<Sprite> Heads;
     
     [Inject] public readonly PersonalityDataSet _dataSet;
 
@@ -92,7 +93,7 @@ public class GameCtrl : MonoBehaviour
 
                 soul.CardDatas = CardDatas;
                 soul.Name = "Todo";
-                soul.HeadImg = null;
+                soul.HeadImg = Heads[Random.Range(0,Heads.Count)];
                 matchData.SoulDatas.Add(soul);
             }
             data.Add(matchData);

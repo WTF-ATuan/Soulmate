@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Game.Scripts;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SoulPanelCtrl : CardsPanelCtrl {
-
+public class SoulPanelCtrl : CardsPanelCtrl
+{
+    public Image Head;
     public void Setup(SoulData data)
     {
         Clean();
         foreach (var card in data.CardDatas) {
             Add(card);
         }
+
+        Head.sprite = data.HeadImg;
     }
     
     protected override bool CanCardDragIn(Card c) {
