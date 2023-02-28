@@ -58,6 +58,7 @@ namespace Game.Scripts{
 		}
 
 		private void UpdateMatchingUI(MatchingRules matching){
+			if(endingUI.activeSelf) return;
 			matchingUI.SetActive(true);
 			matchingUI.GetComponentsInChildren<Image>(true)[1].sprite = matching.image;
 			matchingUI.GetComponentInChildren<Text>(true).text = matching.name;
