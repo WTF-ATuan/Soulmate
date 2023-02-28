@@ -4,14 +4,19 @@ using System.Collections.Generic;
 using Game.Scripts;
 using UniRx;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 using Random = UnityEngine.Random;
 
 public class GameCtrl : MonoBehaviour
 {
+    public const int MaxMatch = 20;
+    
     public static GameCtrl Instance;
     [SerializeField] SoulPanelCtrl LeftSoulPanel,RightSoulPanel;
+    [SerializeField] DownPanelCtrl DownPanelCtrl;
     [SerializeField] GameObject Card;
+    [SerializeField] Text Count;
     
     [Inject] public readonly PersonalityDataSet _dataSet;
 
@@ -28,7 +33,7 @@ public class GameCtrl : MonoBehaviour
     private void Start()
     {
         B_GameStart();
-        EventAggregator.OnEvent<SendMatch>().Subscribe(enabled =>
+        EventAggregator.OnEvent<OnSendMatch>().Subscribe(enabled =>
         {
             NowIndex += 1;
             Setup();
@@ -42,21 +47,29 @@ public class GameCtrl : MonoBehaviour
     
     public void B_GameStart() {
         LevelData = CreateGameData();
+        for (int i = 0; i < 6; i++) {
+            DownPanelCtrl.Add(new CardData(){IDIndex = Random.Range(0,_dataSet.personalityRuleList.Count),IsLock = false});
+        }
         NowIndex = 0;
         Setup();
     }
 
     void Setup()
     {
+        if (NowIndex >= LevelData.Count) {
+            //todo plantResult
+            return;
+        }
         MatchData data = LevelData[NowIndex];
         LeftSoulPanel.Setup(data.SoulDatas[0]);
         RightSoulPanel.Setup(data.SoulDatas[1]);
+        Count.text = $"{NowIndex+1}/{MaxMatch}";
     }
     
     List<MatchData> CreateGameData()
     {
         List<MatchData> data = new List<MatchData>();
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < MaxMatch; i++)
         {
             MatchData matchData = new MatchData();
             matchData.SoulDatas = new List<SoulData>();
